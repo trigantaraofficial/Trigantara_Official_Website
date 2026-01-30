@@ -1,0 +1,205 @@
+@import 'tailwindcss';
+@plugin 'lightswind/plugin';
+
+/* ===== Color Palette (Artist Mode: Luxury & Elegance) ===== */
+:root {
+  /* Scout Colors - Deep & Rich */
+  --scout-brown: #3e2723;
+  --scout-brown-light: #5d4037;
+
+  /* Gold - The "Royal" Palette */
+  --gold: #D4AF37;
+  --gold-light: #F4C430;
+  --gold-dark: #AA8C2C;
+  --gold-pale: #F9E4B7;
+
+  /* Liquid Gold Gradients */
+  --liquid-gold: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+  --liquid-gold-hover: linear-gradient(135deg, #FCF6BA 0%, #BF953F 25%, #AA771C 50%, #B38728 75%, #FBF5B7 100%);
+
+  /* Neutral Colors */
+  --background: #050505;
+  --foreground: #e0e0e0;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Typography System */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-display: var(--font-cinzel);
+  --font-mono: var(--font-geist-mono);
+
+  /* Custom colors */
+  --color-gold: var(--gold);
+}
+
+/* ===== Smooth Scroll ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* ===== Typography ===== */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif), serif;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ===== Ultimate Designer Button ("Liquid Smooth") ===== */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #050505;
+  background: var(--liquid-gold);
+  background-size: 200% auto;
+  border-radius: 9999px;
+  /* Pill Shape */
+  border: none;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 20px -10px rgba(212, 175, 55, 0.5);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover {
+  background-position: right center;
+  /* Shifts the gradient */
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.4) inset;
+  /* Inner glow */
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-secondary:hover::before {
+  left: 100%;
+}
+
+/* ===== Text Gradient Animation ===== */
+.text-gold-gradient {
+  background: var(--liquid-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shine 5s linear infinite reverse;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ===== Utilities ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Marquee Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
