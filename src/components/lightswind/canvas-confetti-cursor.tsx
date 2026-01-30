@@ -69,10 +69,10 @@ export const CanvasConfettiCursor: React.FC<CanvasConfettiCursorProps> = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mousePos = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const particles = useRef<any[]>([]);
-  const animId = useRef<number>();
-  const intervalRef = useRef<number | undefined>();
+  const animId = useRef<number | null>(null);
+  const intervalRef = useRef<number | undefined | null>(null);
   const parentRef = useRef<HTMLDivElement | null>(null);
-  
+
   // Handle canvas resize
   const resizeCanvas = () => {
     if (!canvasRef.current) return;
@@ -166,7 +166,7 @@ export const CanvasConfettiCursor: React.FC<CanvasConfettiCursorProps> = ({
   useEffect(() => {
     if (!enabled) return;
     // OnMove (mouse/touch)
-    function moveHandler(event: MouseEvent | TouchEvent) {
+    function moveHandler(event: any) {
       let x = 0, y = 0;
       if ("touches" in event && event.touches[0]) {
         x = event.touches[0].clientX;

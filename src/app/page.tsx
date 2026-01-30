@@ -474,7 +474,7 @@ export default function Home() {
         />
 
         <Container className="relative z-10">
-          <ScrollAnimation variant="scaleUp">
+          <ScrollAnimation variant="scaleIn">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-10 tracking-tight drop-shadow-lg">
                 Siap Menjadi Bagian dari <br />

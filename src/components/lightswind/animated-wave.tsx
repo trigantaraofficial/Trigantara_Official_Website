@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import * as THREE from 'three';
-import { createNoise2D } from 'simplex-noise';
+import { createNoise3D } from 'simplex-noise';
 import { cn } from '@/lib/utils'; // Assuming this utility is correctly set up
 
 export interface AnimatedWaveProps {
@@ -68,17 +68,17 @@ const getDeviceInfo = (): DeviceInfo => {
       Math.max(
         0,
         window.innerWidth ||
-          document.documentElement.clientWidth ||
-          document.body.clientWidth ||
-          0
+        document.documentElement.clientWidth ||
+        document.body.clientWidth ||
+        0
       ),
     screenHeight: () =>
       Math.max(
         0,
         window.innerHeight ||
-          document.documentElement.clientHeight ||
-          document.body.clientHeight ||
-          0
+        document.documentElement.clientHeight ||
+        document.body.clientHeight ||
+        0
       ),
     screenRatio: function () {
       return this.screenWidth() / this.screenHeight();
@@ -103,7 +103,7 @@ const getDeviceInfo = (): DeviceInfo => {
 };
 
 const addEase = (
-  pos: THREE.Vector3,
+  pos: { x: number; y: number; z: number },
   to: { x: number; y: number; z: number },
   ease: number
 ) => {
@@ -263,7 +263,7 @@ const AnimatedWave: React.FC<AnimatedWaveProps> = ({
       geometry: null as THREE.PlaneGeometry | null,
       material: null as THREE.MeshLambertMaterial | null,
       plane: null as THREE.Mesh | null,
-      simplex: null as ReturnType<typeof createNoise2D> | null, // Simplex noise generator
+      simplex: null as ReturnType<typeof createNoise3D> | null, // Simplex noise generator
       factor: smoothness, // Controls the "wavelength" of the noise
       scale: amplitude, // Controls the "height" of the noise
       speed: speed, // Controls how fast the wave moves over time
@@ -291,7 +291,7 @@ const AnimatedWave: React.FC<AnimatedWaveProps> = ({
         // Create a new Three.js Group to hold the plane, allowing easier positioning/rotation
         this.group = new THREE.Object3D();
         this.group.position.copy(this.move);
-        this.group.rotation.copy(this.look);
+        this.group.rotation.setFromVector3(this.look);
 
         // Define the plane geometry (width, height, segmentsX, segmentsY)
         this.geometry = new THREE.PlaneGeometry(
@@ -324,7 +324,7 @@ const AnimatedWave: React.FC<AnimatedWaveProps> = ({
         this.plane.position.set(0, 0, 0); // Position the plane at the center of its group
 
         // Initialize Simplex noise generator
-        this.simplex = createNoise2D();
+        this.simplex = createNoise3D();
 
         // Perform initial noise calculation (no mouse influence initially)
         this.moveNoise({ x: 0, y: 0 });
@@ -360,7 +360,7 @@ const AnimatedWave: React.FC<AnimatedWaveProps> = ({
           // `this.cycle` provides the time-based animation.
           const xoff_wave = originalX / this.factor;
           const yoff_wave = originalY / this.factor + this.cycle;
-          let zOffset = this.simplex(xoff_wave, yoff_wave) * this.scale; // `this.scale` (amplitude) controls height.
+          let zOffset = this.simplex(xoff_wave, yoff_wave, 0) * this.scale; // `this.scale` (amplitude) controls height.
 
           // --- 2. Mouse Distortion / Wobble Effect (Additional Z-axis displacement) ---
           if (mouseInteraction && this.mouseDistortionStrength > 0) {

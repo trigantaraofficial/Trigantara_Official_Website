@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 interface BentoCardData {
   title: string;
   description: string;
-  icon: React.ElementType;
+  icon: React.ElementType<any>;
   className?: string;
   background?: React.ReactNode;
 }
@@ -31,7 +31,7 @@ export const BentoGrid = ({
       {...props}
     >
       {cards.map((card, index) => {
-        const Icon = card.icon;
+        const Icon = card.icon as any;
         return (
           <div
             key={index}

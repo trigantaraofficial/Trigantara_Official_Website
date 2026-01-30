@@ -5,7 +5,7 @@ import { ArrowRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
-import LogoMarquee from './LogoMarquee';
+import LogoMarquee from '@/components/ui/LogoMarquee';
 import GoldParticles from './GoldParticles';
 
 export default function Hero() {
