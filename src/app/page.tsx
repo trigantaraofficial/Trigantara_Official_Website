@@ -481,7 +481,7 @@ export default function Home() {
                 <span className="text-[#D4AF37] font-medium">Sejarah Kami?</span>
               </h2>
               <p className="text-white/90 text-xl md:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed drop-shadow-md font-medium">
-                Bergabunglah dengan Ambalan Trigantara dan mulailah perjalanan pembentukan karakter, kepemimpinan, dan persaudaraan tanpa batas.
+                Bergabunglah dengan Pramuka Trigantara dan mulailah perjalanan pembentukan karakter, kepemimpinan, dan persaudaraan tanpa batas.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

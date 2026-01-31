@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s | Trigantara',
     default: 'Trigantara - Pramuka SMK Marhas Margahayu',
   },
-  description: 'Website resmi Ambalan Trigantara - Pramuka SMK Marhas Margahayu. Membangun karakter generasi muda melalui gerakan Pramuka.',
+  description: 'Website resmi Pramuka Trigantara - Pramuka SMK Marhas Margahayu. Membangun karakter generasi muda melalui gerakan Pramuka.',
   keywords: ['Trigantara', 'Pramuka', 'SMK Marhas', 'Margahayu', 'Scout', 'Ambalan'],
   openGraph: {
     type: 'website',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     url: 'https://trigantara.com',
     siteName: 'Trigantara',
     title: 'Trigantara - Pramuka SMK Marhas Margahayu',
-    description: 'Website resmi Ambalan Trigantara - Pramuka SMK Marhas Margahayu',
+    description: 'Website resmi Pramuka Trigantara - Pramuka SMK Marhas Margahayu',
   },
 };
 

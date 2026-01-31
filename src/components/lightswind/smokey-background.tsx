@@ -227,10 +227,10 @@ function SmokeyBackground({
     blurClassMap[backdropBlurAmount as BlurSize] || blurClassMap["sm"];
 
   return (
-    <div className={`w-full max-w-screen h-full overflow-hidden ${className}`}>
+    <div className={`w-full max-w-full h-full overflow-hidden ${className}`}>
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full max-w-screen h-full overflow-hidden"
+        className="absolute inset-0 w-full max-w-full h-full overflow-hidden"
         style={{ display: "block" }}
       />
       {/* Apply the mapped Tailwind CSS class for backdrop blur */}

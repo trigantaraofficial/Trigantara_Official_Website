@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const logos = [
-    { name: 'Ambalan Trigantara', src: '/assets/logo/trigantara.png' },
+    { name: 'Pramuka Trigantara', src: '/assets/logo/trigantara.png' },
     { name: 'SMK Marhas', src: '/assets/logo/smkmarhas.png' },
     { name: 'Mahaputra', src: '/assets/logo/mahaputra.png' },
 ];

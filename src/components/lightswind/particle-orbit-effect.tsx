@@ -299,7 +299,7 @@ const ParticleOrbitEffect: React.FC<ParticleOrbitEffectProps> = ({
     <div className={cn("fixed top-0 left-0 z-50 pointer-events-none w-full h-full", className)}>
       <canvas
         ref={canvasRef}
-        className="w-screen h-screen block"
+        className="w-full h-screen block"
         style={style}
         aria-hidden="true"
       />

@@ -75,20 +75,20 @@ export function InteractiveCardGallery({
       case 1: return "grid-cols-1";
       case 2: return "sm:grid-cols-2";
       case 3: return "sm:grid-cols-2 lg:grid-cols-3";
-      case 4: 
+      case 4:
       default: return "sm:grid-cols-2 lg:grid-cols-4";
     }
   };
 
   return (
-    <div 
+    <div
       className={cn(
-        `grid gap-4 p-4 max-w-screen-lg mx-auto ${getGridCols()}`,
+        `grid gap-4 p-4 max-w-full-lg mx-auto ${getGridCols()}`,
         className
       )}
-      style={{ 
-        "--hover-scale": hoverScale, 
-        "--transition-duration": `${transitionDuration}ms` 
+      style={{
+        "--hover-scale": hoverScale,
+        "--transition-duration": `${transitionDuration}ms`
       } as React.CSSProperties}
     >
       {cards.map((card, index) => (

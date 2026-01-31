@@ -263,7 +263,7 @@ const AnimatedBubbleParticles: React.FC<AnimatedBubbleParticlesProps> = ({
       ref={containerRef}
       className={cn(
         "relative overflow-hidden",
-        "w-screen h-screen", // Always apply full screen width and height
+        "w-full h-screen", // Always apply full screen width and height
         backgroundClass, // Apply the determined background class here
         className // User's className comes last to ensure highest precedence
       )}

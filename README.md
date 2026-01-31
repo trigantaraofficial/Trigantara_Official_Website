@@ -1,6 +1,6 @@
 # Trigantara Official Website
 
-Website resmi untuk Ambalan Trigantara, dibangun dengan teknologi web modern untuk menyajikan informasi yang informatif dan pengalaman visual yang menarik.
+Website resmi untuk Pramuka Trigantara, dibangun dengan teknologi web modern untuk menyajikan informasi yang informatif dan pengalaman visual yang menarik.
 
 ## 🚀 Deskripsi Proyek
 

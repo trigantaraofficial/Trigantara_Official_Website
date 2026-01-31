@@ -33,8 +33,12 @@ export default function GoldParticles({ className = "", count = 50 }: GoldPartic
         };
 
         const createParticles = () => {
+            const isMobile = window.innerWidth < 768;
+            // Reduce count on mobile for performance
+            const particleCount = isMobile ? Math.min(count, 20) : count;
+
             particles = [];
-            for (let i = 0; i < count; i++) {
+            for (let i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,

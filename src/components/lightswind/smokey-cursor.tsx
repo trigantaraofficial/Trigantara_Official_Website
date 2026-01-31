@@ -1554,7 +1554,7 @@ export default function SmokeyCursor({
       <canvas
         ref={canvasRef}
         id="fluid"
-        className="w-screen h-screen block"
+        className="w-full h-screen block"
       ></canvas>
     </div>
   );

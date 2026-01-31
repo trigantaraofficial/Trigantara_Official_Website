@@ -156,10 +156,10 @@ function ReflectBackground({
   const finalBlurClass = blurClassMap[backdropBlurAmount] || blurClassMap["sm"];
 
   return (
-    <div className={`w-full max-w-screen h-full overflow-hidden ${className}`}>
+    <div className={`w-full max-w-full h-full overflow-hidden ${className}`}>
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full max-w-screen h-full overflow-hidden"
+        className="absolute inset-0 w-full max-w-full h-full overflow-hidden"
         style={{ display: "block" }}
       />
       <div className={`absolute inset-0 ${finalBlurClass}`} />

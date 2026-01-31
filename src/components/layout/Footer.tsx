@@ -67,7 +67,7 @@ export default function Footer() {
                             </motion.div>
                             <div>
                                 <span className="font-medium text-lg text-white/90 group-hover:text-white transition-colors block">
-                                    Ambalan Trigantara
+                                    Pramuka Trigantara
                                 </span>
                                 <span className="text-white/30 text-sm">SMK Marhas Margahayu</span>
                             </div>
