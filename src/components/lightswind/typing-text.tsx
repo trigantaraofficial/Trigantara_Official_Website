@@ -48,9 +48,9 @@ export const TypingText = ({
       }
       if (
         React.isValidElement(node) &&
-        typeof node.props.children !== "undefined"
+        typeof (node as any).props.children !== "undefined"
       ) {
-        return extractText(node.props.children);
+        return extractText((node as any).props.children);
       }
       return "";
     };
@@ -75,8 +75,10 @@ export const TypingText = ({
     }),
   };
 
+  const Tag = Component as any;
+
   return (
-    <Component
+    <Tag
       className={cn(
         "inline-flex",
         className,
@@ -87,8 +89,8 @@ export const TypingText = ({
         align === "center"
           ? "justify-center text-center"
           : align === "right"
-          ? "justify-end text-right"
-          : "justify-start text-left"
+            ? "justify-end text-right"
+            : "justify-start text-left"
       )}
     >
       <motion.span
@@ -111,6 +113,6 @@ export const TypingText = ({
           </motion.span>
         ))}
       </motion.span>
-    </Component>
+    </Tag>
   );
 };

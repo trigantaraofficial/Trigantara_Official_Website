@@ -35,7 +35,7 @@ export default function ScrollAnimation({
             transition={{
                 duration,
                 delay,
-                ease: animationConfig.ease.smooth,
+                ease: animationConfig.ease.smooth as any,
             }}
             className={className}
         >
@@ -107,7 +107,7 @@ const itemVariants: Variants = {
         y: 0,
         transition: {
             duration: animationConfig.duration.normal,
-            ease: animationConfig.ease.smooth,
+            ease: animationConfig.ease.smooth as any,
         },
     },
 };
@@ -138,7 +138,7 @@ export function Parallax({ children, className = '', offset = 50 }: ParallaxProp
             viewport={{ once: false, margin: '-100px' }}
             transition={{
                 duration: animationConfig.duration.slow,
-                ease: animationConfig.ease.smooth,
+                ease: animationConfig.ease.smooth as any,
             }}
             className={className}
         >

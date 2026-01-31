@@ -94,7 +94,7 @@ void main() {
 function GradientBackground({
   backdropBlurAmount = "none",
   className = "",
-}: HellBackgroundProps): JSX.Element {
+}: HellBackgroundProps): React.ReactElement {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -174,16 +174,16 @@ function GradientBackground({
 
   const finalBlurClass = blurClassMap[backdropBlurAmount as BlurSize] || blurClassMap["sm"];
 
-return (
-  <div className={`w-full max-w-screen h-full overflow-hidden bg-black dark:bg-black ${className}`}>
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full max-w-screen h-full overflow-hidden"
-      style={{ display: "block" }}
-    />
-    <div className={`absolute inset-0 ${finalBlurClass}`} />
-  </div>
-);
+  return (
+    <div className={`w-full max-w-screen h-full overflow-hidden bg-black dark:bg-black ${className}`}>
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full max-w-screen h-full overflow-hidden"
+        style={{ display: "block" }}
+      />
+      <div className={`absolute inset-0 ${finalBlurClass}`} />
+    </div>
+  );
 
 }
 

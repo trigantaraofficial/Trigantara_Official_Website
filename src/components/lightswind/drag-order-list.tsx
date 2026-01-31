@@ -8,6 +8,7 @@ import {
   motion,
   animate,
   DragControls,
+  MotionValue,
 } from "framer-motion";
 import { GripVertical } from "lucide-react";
 
@@ -96,14 +97,15 @@ function ReorderHandle({ dragControls }: { dragControls: DragControls }) {
 
 const inactiveShadow = "0px 0px 0px rgba(0,0,0,0.8)";
 
-function useRaisedShadow(value: ReturnType<typeof useMotionValue>) {
+function useRaisedShadow(value: MotionValue<number>) {
   const boxShadow = useMotionValue(inactiveShadow);
 
   useEffect(() => {
     let isActive = false;
-    value.onChange((latest) => {
+    return value.on("change", (latest) => {
+      const current = latest as number;
       const wasActive = isActive;
-      if (latest !== 0) {
+      if (current !== 0) {
         isActive = true;
         if (isActive !== wasActive) {
           animate(boxShadow, "5px 5px 15px rgba(0,0,0,0.15)");
@@ -115,7 +117,7 @@ function useRaisedShadow(value: ReturnType<typeof useMotionValue>) {
         }
       }
     });
-  }, [value]);
+  }, [value, boxShadow]);
 
   return boxShadow;
 }

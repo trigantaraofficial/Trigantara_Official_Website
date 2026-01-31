@@ -49,7 +49,7 @@ interface SheetTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement
 
 const SheetTrigger = React.forwardRef<HTMLButtonElement, SheetTriggerProps>(
   ({ children, asChild, ...props }, forwardedRef) => {
-    const { setOpen } = React.useContext(SheetContext) || { setOpen: () => {} };
+    const { setOpen } = React.useContext(SheetContext) || { setOpen: () => { } };
 
     // Derive dependencies for the hook before the hook itself.
     // This logic can be conditional as it does not involve hooks.
@@ -83,12 +83,12 @@ const SheetTrigger = React.forwardRef<HTMLButtonElement, SheetTriggerProps>(
       }
 
       // Use the memoized `mergedRef` inside the conditional block.
-      return React.cloneElement(child, {
-        ...child.props,
+      return React.cloneElement(child as React.ReactElement<any>, {
+        ...(child as any).props,
         ...props, // Pass down props like className, etc., to the child
         onClick: (e: React.MouseEvent) => {
           setOpen(true);
-          if (child.props.onClick) child.props.onClick(e);
+          if ((child as any).props.onClick) (child as any).props.onClick(e);
         },
         ref: mergedRef,
       });

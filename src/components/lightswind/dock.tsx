@@ -7,15 +7,16 @@ import {
   useTransform,
   AnimatePresence,
   MotionValue,
+  HTMLMotionProps,
 } from "framer-motion";
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 function useDockItemSize(
   mouseX: MotionValue<number>,
   baseItemSize: number,
   magnification: number,
   distance: number,
-  ref: React.RefObject<HTMLDivElement>,
+  ref: React.RefObject<HTMLDivElement | null>,
   spring: { mass: number; stiffness: number; damping: number }
 ) {
   const mouseDistance = useTransform(mouseX, (val) => {

@@ -132,13 +132,13 @@ const PopoverTrigger: React.FC<PopoverTriggerProps> = ({
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             const childProps = {
-              ...child.props,
+              ...(child as any).props,
               onClick: (e: React.MouseEvent) => {
                 handleClick(e as React.MouseEvent<HTMLElement>);
-                if (child.props.onClick) child.props.onClick(e);
+                if ((child as any).props.onClick) (child as any).props.onClick(e);
               },
             };
-            return React.cloneElement(child, childProps);
+            return React.cloneElement(child as React.ReactElement<any>, childProps);
           }
           return child;
         })}

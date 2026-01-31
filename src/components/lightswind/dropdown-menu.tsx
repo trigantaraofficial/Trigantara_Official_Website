@@ -141,7 +141,7 @@ const DropdownMenuTrigger = React.forwardRef<
     }
 
     return React.cloneElement(child, {
-      ...child.props,
+      ...(child as any).props,
       ref: (node: HTMLElement | null) => {
         // Update the internal triggerRef
         triggerRef.current = node;
@@ -167,15 +167,15 @@ const DropdownMenuTrigger = React.forwardRef<
       },
       onClick: (e: React.MouseEvent) => {
         handleClick(e as React.MouseEvent<HTMLButtonElement>);
-        if (child.props.onClick) child.props.onClick(e);
+        if ((child as any).props.onClick) (child as any).props.onClick(e);
       },
       onMouseEnter: (e: React.MouseEvent) => {
         handleMouseEnter(e as React.MouseEvent<HTMLElement>);
-        if (child.props.onMouseEnter) child.props.onMouseEnter(e);
+        if ((child as any).props.onMouseEnter) (child as any).props.onMouseEnter(e);
       },
       onMouseLeave: (e: React.MouseEvent) => {
         handleMouseLeaveTrigger(e as React.MouseEvent<HTMLElement>);
-        if (child.props.onMouseLeave) child.props.onMouseLeave(e);
+        if ((child as any).props.onMouseLeave) (child as any).props.onMouseLeave(e);
       },
     });
   }
@@ -476,7 +476,7 @@ const DropdownMenuContent = React.forwardRef<
 );
 DropdownMenuContent.displayName = "DropdownMenuContent";
 
-interface DropdownMenuLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface DropdownMenuLabelProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 const DropdownMenuLabel = React.forwardRef<
   HTMLDivElement,
@@ -541,7 +541,7 @@ const DropdownMenuItem = React.forwardRef<
 DropdownMenuItem.displayName = "DropdownMenuItem";
 
 interface DropdownMenuSeparatorProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+  extends React.HTMLAttributes<HTMLDivElement> { }
 
 const DropdownMenuSeparator = React.forwardRef<
   HTMLDivElement,
@@ -555,7 +555,7 @@ const DropdownMenuSeparator = React.forwardRef<
 ));
 DropdownMenuSeparator.displayName = "DropdownMenuSeparator";
 
-interface DropdownMenuGroupProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface DropdownMenuGroupProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 const DropdownMenuGroup = React.forwardRef<
   HTMLDivElement,
