@@ -110,8 +110,8 @@ export default function ContactForm() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={`w-full inline-flex items-center justify-center gap-2 font-medium py-4 rounded-xl transition-all duration-300 ${status === 'success'
-                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-                        : 'bg-[#d4a017] text-black hover:bg-[#f0c040]'
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/50'
+                    : 'bg-[#d4a017] text-black hover:bg-[#f0c040]'
                     } disabled:opacity-70 disabled:cursor-not-allowed`}
             >
                 {status === 'loading' ? (

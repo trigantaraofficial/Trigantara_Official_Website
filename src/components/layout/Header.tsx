@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight } from 'lucide-react';
 import Container from '../ui/Container';
 
 export default function Header() {
+    const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -34,6 +36,19 @@ export default function Header() {
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
+
+            // Add escape key handler
+            const handleEscape = (e: KeyboardEvent) => {
+                if (e.key === 'Escape') {
+                    setIsMenuOpen(false);
+                }
+            };
+
+            document.addEventListener('keydown', handleEscape);
+            return () => {
+                document.body.style.overflow = 'unset';
+                document.removeEventListener('keydown', handleEscape);
+            };
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -91,16 +106,23 @@ export default function Header() {
                                     WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'blur(0px)',
                                 }}
                             >
-                                {navigation.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        href={item.href}
-                                        className="relative text-white/80 hover:text-white px-5 py-2.5 text-base font-medium transition-all duration-300 group rounded-full hover:bg-white/5"
-                                    >
-                                        {item.name}
-                                        <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-[#d4a017]/0 via-[#d4a017] to-[#d4a017]/0 group-hover:w-2/3 transition-all duration-300 ease-out rounded-full" />
-                                    </Link>
-                                ))}
+                                {navigation.map((item) => {
+                                    const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                                    return (
+                                        <Link
+                                            key={item.name}
+                                            href={item.href}
+                                            className={`relative px-5 py-2.5 text-base font-medium transition-all duration-300 group rounded-full ${isActive
+                                                ? 'text-[#d4a017] bg-white/5'
+                                                : 'text-white/80 hover:text-white hover:bg-white/5'
+                                                }`}
+                                        >
+                                            {item.name}
+                                            <span className={`absolute bottom-1.5 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-[#d4a017]/0 via-[#d4a017] to-[#d4a017]/0 transition-all duration-300 ease-out rounded-full ${isActive ? 'w-2/3' : 'w-0 group-hover:w-2/3'
+                                                }`} />
+                                        </Link>
+                                    );
+                                })}
                             </motion.div>
                         </nav>
 
@@ -188,27 +210,36 @@ export default function Header() {
                             <div className="flex flex-col h-full pt-24 pb-8 px-6">
                                 <nav className="flex-1">
                                     <ul className="space-y-1">
-                                        {navigation.map((item, index) => (
-                                            <motion.li
-                                                key={item.name}
-                                                initial={{ opacity: 0, x: 30 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{
-                                                    delay: 0.1 + index * 0.05,
-                                                    duration: 0.3,
-                                                    ease: [0.4, 0, 0.2, 1]
-                                                }}
-                                            >
-                                                <Link
-                                                    href={item.href}
-                                                    className="flex items-center justify-between py-4 px-4 text-lg text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 group"
-                                                    onClick={() => setIsMenuOpen(false)}
+                                        {navigation.map((item, index) => {
+                                            const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                                            return (
+                                                <motion.li
+                                                    key={item.name}
+                                                    initial={{ opacity: 0, x: 30 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{
+                                                        delay: 0.1 + index * 0.05,
+                                                        duration: 0.3,
+                                                        ease: [0.4, 0, 0.2, 1]
+                                                    }}
                                                 >
-                                                    <span>{item.name}</span>
-                                                    <ChevronRight className="w-5 h-5 text-white/30 group-hover:text-[#d4a017] group-hover:translate-x-1 transition-all" />
-                                                </Link>
-                                            </motion.li>
-                                        ))}
+                                                    <Link
+                                                        href={item.href}
+                                                        className={`flex items-center justify-between py-4 px-4 text-lg rounded-xl transition-all duration-200 group ${isActive
+                                                            ? 'text-[#d4a017] bg-[#d4a017]/10'
+                                                            : 'text-white/70 hover:text-white hover:bg-white/5'
+                                                            }`}
+                                                        onClick={() => setIsMenuOpen(false)}
+                                                    >
+                                                        <span>{item.name}</span>
+                                                        <ChevronRight className={`w-5 h-5 transition-all ${isActive
+                                                            ? 'text-[#d4a017]'
+                                                            : 'text-white/30 group-hover:text-[#d4a017] group-hover:translate-x-1'
+                                                            }`} />
+                                                    </Link>
+                                                </motion.li>
+                                            );
+                                        })}
                                     </ul>
                                 </nav>
 

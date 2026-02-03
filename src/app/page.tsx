@@ -6,6 +6,7 @@ import ScrollAnimation from "@/components/ui/ScrollAnimation";
 import LogoMarquee from "@/components/ui/LogoMarquee";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
 import JadwalLatihan from "@/components/ui/JadwalLatihan";
+import StatsCounter from "@/components/ui/StatsCounter";
 import { ArrowRight } from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image";
@@ -106,6 +107,34 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* Stats Section - Achievements at a Glance */}
+      <section className="py-20 md:py-28 relative overflow-hidden border-y border-white/5">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0d0d0d] to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,160,23,0.05)_0%,transparent_70%)]" />
+
+        <Container className="relative z-10">
+          <ScrollAnimation variant="fadeUp">
+            <div className="text-center mb-12">
+              <p className="text-[#d4a017]/80 text-xs tracking-[0.35em] uppercase mb-4">Pencapaian</p>
+              <h2 className="text-2xl md:text-3xl font-light text-white">
+                Trigantara dalam <span className="text-white/50">Angka</span>
+              </h2>
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation variant="fadeUp" delay={0.2}>
+            <StatsCounter
+              stats={[
+                { value: 120, suffix: '+', label: 'Anggota Aktif' },
+                { value: 15, suffix: '+', label: 'Prestasi' },
+                { value: 50, suffix: '+', label: 'Kegiatan' },
+                { value: 5, label: 'Tahun Berdiri' },
+              ]}
+            />
+          </ScrollAnimation>
         </Container>
       </section>
 
