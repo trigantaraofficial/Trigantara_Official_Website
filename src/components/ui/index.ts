@@ -21,6 +21,7 @@ export { default as Select } from './Select';
 export { default as Tooltip } from './Tooltip';
 
 // Display Components
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './CardComponent';
 export { default as Lightbox } from './Lightbox';
 export { default as TeamModal } from './TeamModal';
 export { default as StatsCounter } from './StatsCounter';
