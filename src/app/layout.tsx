@@ -45,12 +45,7 @@ export const metadata: Metadata = {
   },
 };
 
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import { SkipLink } from "@/components/ui/Accessibility";
-import SmoothScroll from "@/components/ui/SmoothScroll";
-import ErrorBoundary from "@/components/ui/ErrorBoundary";
-import BackToTop from "@/components/ui/BackToTop";
+import { LayoutShell } from "@/components/layout/LayoutShell";
 
 export default function RootLayout({
   children,
@@ -62,17 +57,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} ${playfair.variable} ${cinzel.variable} antialiased flex flex-col min-h-screen bg-[#050505] text-white overflow-x-hidden`}
       >
-        <ErrorBoundary>
-          <SmoothScroll>
-            <SkipLink />
-            <Header />
-            <main id="main-content" className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-            <BackToTop />
-          </SmoothScroll>
-        </ErrorBoundary>
+        <LayoutShell>
+          {children}
+        </LayoutShell>
       </body>
     </html>
   );

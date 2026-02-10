@@ -77,7 +77,7 @@ export default function AchievementsPage() {
                                 <Trophy className="w-4 h-4 text-[#D4AF37]" />
                                 <span className="text-[#D4AF37] text-sm font-medium tracking-wide">Hall of Fame</span>
                             </div>
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 tracking-tight">
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-[family-name:var(--font-cinzel)] font-bold text-white mb-6 tracking-tight">
                                 Prestasi <span className="text-gold-gradient">Membanggakan</span>
                             </h1>
                             <p className="text-lg text-white/60 leading-relaxed font-light">

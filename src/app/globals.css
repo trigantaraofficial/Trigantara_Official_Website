@@ -203,3 +203,34 @@ h6 {
     transform: translateX(-50%);
   }
 }
+
+/* ===== Custom Gold Scrollbar ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF37 #0a0a0a;
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37 0%, #AA8C2C 100%);
+  border-radius: 10px;
+  border: 1px solid #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #F4C430 0%, #D4AF37 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: #0a0a0a;
+}

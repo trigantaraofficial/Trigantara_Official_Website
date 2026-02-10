@@ -8,61 +8,59 @@ import { motion } from "framer-motion";
 import { User, Shield, Star, Award } from 'lucide-react';
 import Image from "next/image";
 
-// Sample Team Data
+// Team Data - Updated with correct names
 const coreTeam = [
     {
         id: "1",
-        name: "Rizky Firmansyah",
+        name: "Arief Fajar",
         role: "Pradana Putra",
-        image: "/assets/image/background.webp", // Placeholder
+        image: "/assets/image/background.webp",
         bio: "Bertanggung jawab memimpin Ambalan Putra dan mengkoordinasikan program kerja tahunan."
     },
     {
         id: "2",
-        name: "Siti Nurhaliza",
-        role: "Pradani Putri",
+        name: "Intan Nurhayati",
+        role: "Pradana Putri",
         image: "/assets/image/background.webp",
         bio: "Bertanggung jawab memimpin Ambalan Putri dan memastikan kelancaran kegiatan keputrian."
     },
     {
         id: "3",
-        name: "Ahmad Dani",
-        role: "Kerani (Sekretaris)",
+        name: "Angga Fahri",
+        role: "Juru Adat Putra",
         image: "/assets/image/background.webp",
-        bio: "Mengelola administrasi dan surat-menyurat ambalan serta dokumentasi kegiatan."
+        bio: "Menjaga nilai-nilai adat ambalan putra dan menegakkan kedisiplinan anggota."
     },
     {
         id: "4",
-        name: "Dewi Sartika",
-        role: "Juru Uang (Bendahara)",
+        name: "Alicia Fasma Nidai",
+        role: "Juru Adat Putri",
         image: "/assets/image/background.webp",
-        bio: "Mengelola keuangan ambalan, pembukuan, dan pelaporan anggaran kegiatan."
+        bio: "Menjaga nilai-nilai adat ambalan putri dan menegakkan kedisiplinan anggota."
     },
-    {
-        id: "5",
-        name: "Budi Santoso",
-        role: "Pemangku Adat",
-        image: "/assets/image/background.webp",
-        bio: "Menjaga nilai-nilai adat ambalan dan menegakkan kedisiplinan anggota."
-    }
 ];
 
 const pembina = [
     {
-        name: "Kak Budi Setiawan",
-        role: "Ka. Mabigus",
-        image: "/assets/image/background.webp"
-    },
-    {
-        name: "Kak Siti Aminah",
+        name: "Abdillah Andi Salam",
         role: "Pembina Putra",
         image: "/assets/image/background.webp"
     },
     {
-        name: "Kak Rina Wati",
+        name: "Ibu Eka Sofiyati SH MM",
         role: "Pembina Putri",
         image: "/assets/image/background.webp"
-    }
+    },
+    {
+        name: "Kak Testivan Riyadi",
+        role: "Pelatih Putra",
+        image: "/assets/image/background.webp"
+    },
+    {
+        name: "Kak Sylvie",
+        role: "Pelatih Putri",
+        image: "/assets/image/background.webp"
+    },
 ];
 
 export default function TeamPage() {
@@ -85,7 +83,7 @@ export default function TeamPage() {
                             <Shield className="w-4 h-4 text-[#d4a017]" />
                             <span className="text-[#d4a017] text-sm font-medium">Struktur Organisasi</span>
                         </div>
-                        <h1 className="text-4xl md:text-7xl font-bold text-white mb-6">
+                        <h1 className="text-4xl md:text-7xl font-[family-name:var(--font-cinzel)] font-bold text-white mb-6">
                             Dewan <span className="text-[#d4a017]">Ambalan</span>
                         </h1>
                         <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
@@ -125,40 +123,64 @@ export default function TeamPage() {
                 </Container>
             </section>
 
-            {/* Pembina Section */}
-            <section className="py-20 bg-gradient-to-b from-[#0a0a0a] to-black relative">
+            {/* Pembina & Pelatih Section - PREMIUM REDESIGN */}
+            <section className="py-24 bg-gradient-to-b from-[#0a0a0a] to-black relative overflow-hidden">
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d4a017]/20 to-transparent" />
 
-                <Container>
+                {/* Background glow */}
+                <motion.div
+                    animate={{ opacity: [0.03, 0.08, 0.03] }}
+                    transition={{ duration: 8, repeat: Infinity }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/5 rounded-full blur-[150px] pointer-events-none"
+                />
+
+                <Container className="relative z-10">
                     <ScrollAnimation variant="fadeUp" className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-white mb-4">Majelis Pembimbing</h2>
-                        <p className="text-white/40">Para pembina yang senantiasa membimbing langkah kami</p>
+                        <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">Majelis Pembimbing</h2>
+                        <p className="text-white/40 text-lg">Para pembina dan pelatih yang senantiasa membimbing langkah kami</p>
                     </ScrollAnimation>
 
-                    <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                        {pembina.map((item, index) => (
-                            <ScrollAnimation key={index} variant="fadeUp" delay={index * 0.1}>
-                                <div className="group relative rounded-2xl bg-white/[0.02] border border-white/[0.05] p-6 text-center hover:bg-white/[0.04] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-32 h-32 mx-auto rounded-full relative mb-6 p-1 border-2 border-[#d4a017]/30 group-hover:border-[#d4a017] transition-colors">
-                                        <div className="w-full h-full rounded-full overflow-hidden relative">
-                                            <Image
-                                                src={item.image}
-                                                alt={item.name}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                    </div>
-                                    <h3 className="text-xl font-medium text-white mb-1">{item.name}</h3>
-                                    <p className="text-[#d4a017] text-sm">{item.role}</p>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                        {pembina.map((item, index) => {
+                            const isPelatih = item.role.includes('Pelatih');
+                            const IconComponent = isPelatih ? Star : Shield;
 
-                                    {/* Decoration */}
-                                    <div className="absolute top-4 right-4 text-white/5 group-hover:text-[#d4a017]/10 transition-colors">
-                                        <Award className="w-8 h-8" />
-                                    </div>
-                                </div>
-                            </ScrollAnimation>
-                        ))}
+                            return (
+                                <ScrollAnimation key={index} variant="fadeUp" delay={index * 0.1}>
+                                    <motion.div
+                                        whileHover={{ y: -8 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                        className="group relative rounded-2xl overflow-hidden"
+                                    >
+                                        {/* Gradient border effect */}
+                                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#D4AF37]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]" />
+
+                                        <div className="relative bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/[0.06] group-hover:border-[#D4AF37]/20 rounded-2xl p-6 text-center transition-all duration-500">
+                                            {/* Role Icon */}
+                                            <div className="absolute top-4 right-4 w-8 h-8 rounded-lg bg-[#D4AF37]/5 flex items-center justify-center group-hover:bg-[#D4AF37]/10 transition-colors">
+                                                <IconComponent className="w-4 h-4 text-[#D4AF37]/40 group-hover:text-[#D4AF37] transition-colors" />
+                                            </div>
+
+                                            {/* Photo */}
+                                            <div className="w-28 h-28 mx-auto rounded-full relative mb-5 p-[2px] bg-gradient-to-b from-[#D4AF37]/40 to-[#D4AF37]/10 group-hover:from-[#D4AF37] group-hover:to-[#AA8C2C] transition-all duration-500">
+                                                <div className="w-full h-full rounded-full overflow-hidden relative bg-[#0a0a0a]">
+                                                    <Image
+                                                        src={item.image}
+                                                        alt={item.name}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            {/* Info */}
+                                            <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-[#D4AF37] transition-colors">{item.name}</h3>
+                                            <p className="text-[#D4AF37]/60 text-xs tracking-wider uppercase font-medium">{item.role}</p>
+                                        </div>
+                                    </motion.div>
+                                </ScrollAnimation>
+                            );
+                        })}
                     </div>
                 </Container>
             </section>

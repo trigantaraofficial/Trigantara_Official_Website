@@ -44,7 +44,7 @@ export default function AboutPage() {
                             <p className="text-[#d4a017]/80 text-xs tracking-[0.35em] uppercase mb-6 font-medium">
                                 Tentang Kami
                             </p>
-                            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-white mb-8 tracking-wide">
+                            <h1 className="text-4xl md:text-5xl lg:text-7xl font-[family-name:var(--font-cinzel)] font-bold text-white mb-8 tracking-wide">
                                 Mengenal <span className="text-[#d4a017]">Trigantara</span>
                             </h1>
                             <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto font-light">
@@ -166,40 +166,48 @@ export default function AboutPage() {
                 </Container>
             </section>
 
-            {/* Values Section Grid */}
+            {/* Values Section - Dasa Darma with GlowingCards */}
             <section className="py-32 relative overflow-hidden bg-[#080808]">
                 <Container className="relative z-10">
                     <ScrollAnimation variant="fadeUp">
-                        <div className="text-center mb-20">
-                            <h2 className="text-3xl md:text-5xl font-serif text-white tracking-wide">
+                        <div className="text-center mb-16">
+                            <p className="text-[#D4AF37]/70 text-xs tracking-[0.35em] uppercase mb-6">Kode Kehormatan</p>
+                            <h2 className="text-3xl md:text-5xl font-[family-name:var(--font-cinzel)] font-bold text-white tracking-wide">
                                 Dasa Darma <span className="text-[#d4a017]">Pramuka</span>
                             </h2>
                         </div>
                     </ScrollAnimation>
 
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <GlowingCards enableGlow={true} glowRadius={20} gap="1rem" padding="0" maxWidth="70rem">
                         {[
-                            { icon: Heart, label: 'Takwa kepada Tuhan YME' },
-                            { icon: Compass, label: 'Cinta alam dan sesama' },
-                            { icon: Shield, label: 'Patriot yang sopan' },
-                            { icon: Users, label: 'Patuh dan bermusyawarah' },
-                            { icon: Heart, label: 'Rela menolong' },
-                            { icon: BookOpen, label: 'Rajin dan terampil' },
-                            { icon: Target, label: 'Hemat dan cermat' },
-                            { icon: Shield, label: 'Disiplin dan tabah' },
-                            { icon: Award, label: 'Bertanggung jawab' },
-                            { icon: Heart, label: 'Suci dalam pikiran' },
+                            { icon: Heart, label: 'Takwa kepada Tuhan Yang Maha Esa' },
+                            { icon: Compass, label: 'Cinta alam dan kasih sayang sesama manusia' },
+                            { icon: Shield, label: 'Patriot yang sopan dan ksatria' },
+                            { icon: Users, label: 'Patuh dan suka bermusyawarah' },
+                            { icon: Heart, label: 'Rela menolong dan tabah' },
+                            { icon: BookOpen, label: 'Rajin, terampil, dan gembira' },
+                            { icon: Target, label: 'Hemat, cermat, dan bersahaja' },
+                            { icon: Shield, label: 'Disiplin, berani, dan setia' },
+                            { icon: Award, label: 'Bertanggung jawab dan dapat dipercaya' },
+                            { icon: Heart, label: 'Suci dalam pikiran, perkataan, dan perbuatan' },
                         ].map((item, i) => (
-                            <motion.div
+                            <GlowingCard
                                 key={i}
-                                whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.03)' }}
-                                className="p-6 rounded-xl bg-white/[0.01] border border-white/5 text-center group transition-colors"
+                                glowColor="#D4AF37"
+                                className="!min-w-[260px] !max-w-[330px] !p-5 !rounded-xl !bg-white/[0.02] !border-white/[0.06]"
                             >
-                                <item.icon className="w-6 h-6 text-[#d4a017]/40 group-hover:text-[#d4a017] mx-auto mb-4 transition-colors" />
-                                <p className="text-xs text-white/50 uppercase tracking-wider">{item.label}</p>
-                            </motion.div>
+                                <div className="flex items-center gap-4">
+                                    <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-[#D4AF37]/20 to-[#D4AF37]/5 flex items-center justify-center border border-[#D4AF37]/20">
+                                        <item.icon className="w-5 h-5 text-[#D4AF37]" />
+                                    </span>
+                                    <div>
+                                        <span className="text-[#D4AF37]/40 text-xs font-mono">{String(i + 1).padStart(2, '0')}</span>
+                                        <p className="text-white/80 text-sm font-light leading-snug">{item.label}</p>
+                                    </div>
+                                </div>
+                            </GlowingCard>
                         ))}
-                    </div>
+                    </GlowingCards>
                 </Container>
             </section>
         </div>

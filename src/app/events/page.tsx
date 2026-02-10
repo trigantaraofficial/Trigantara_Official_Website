@@ -74,7 +74,7 @@ export default function EventsPage() {
                                 <Calendar className="w-4 h-4 text-[#d4a017]" />
                                 <span className="text-[#d4a017] text-sm">Agenda Kegiatan</span>
                             </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-cinzel)] font-bold text-white mb-6 tracking-tight">
                                 Jadwal <span className="bg-gradient-to-r from-[#d4a017] to-[#f0c040] bg-clip-text text-transparent">Pramuka</span>
                             </h1>
                             <p className="text-lg text-white/60 leading-relaxed">

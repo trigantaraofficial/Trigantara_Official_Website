@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Hero from "@/components/ui/Hero";
 import Container from "@/components/ui/Container";
 import ScrollAnimation from "@/components/ui/ScrollAnimation";
@@ -7,12 +8,15 @@ import LogoMarquee from "@/components/ui/LogoMarquee";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
 import JadwalLatihan from "@/components/ui/JadwalLatihan";
 import StatsCounter from "@/components/ui/StatsCounter";
+import BergabungModal from "@/components/ui/BergabungModal";
 import { ArrowRight } from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const [showBergabungModal, setShowBergabungModal] = useState(false);
+
   return (
     <div>
       {/* Hero Section */}
@@ -205,7 +209,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Dasa Darma Section - RESTORED ORIGINAL BUT POLISHED */}
+      {/* Dasa Darma Section */}
       <section className="py-32 md:py-40 relative overflow-hidden border-y border-white/5">
         <div className="absolute inset-0 bg-[#0a0a0a]" />
 
@@ -322,8 +326,8 @@ export default function Home() {
                         className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/20 to-transparent"
                       />
 
-                      {/* Badge */}
-                      <div className="absolute top-8 left-8">
+                      {/* Badge - moved to bottom to fix mobile overlap */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
                         <div className="px-5 py-2.5 rounded-full bg-[#D4AF37]/20 backdrop-blur-md border border-[#D4AF37]/30">
                           <span className="text-[#D4AF37] text-sm font-semibold tracking-widest uppercase">Ambalan Putra</span>
                         </div>
@@ -373,8 +377,8 @@ export default function Home() {
                         className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/20 to-transparent"
                       />
 
-                      {/* Badge */}
-                      <div className="absolute top-8 left-8">
+                      {/* Badge - moved to bottom to fix mobile overlap */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
                         <div className="px-5 py-2.5 rounded-full bg-[#D4AF37]/20 backdrop-blur-md border border-[#D4AF37]/30">
                           <span className="text-[#D4AF37] text-sm font-semibold tracking-widest uppercase">Ambalan Putri</span>
                         </div>
@@ -514,13 +518,13 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Link
-                  href="/contact"
-                  className="group relative px-10 py-5 bg-[#d4a017] text-black font-medium tracking-wide overflow-hidden rounded-full transition-all hover:scale-105 hover:bg-[#b08d55]"
+                <button
+                  onClick={() => setShowBergabungModal(true)}
+                  className="group relative px-10 py-5 bg-[#d4a017] text-black font-medium tracking-wide overflow-hidden rounded-full transition-all hover:scale-105 hover:bg-[#b08d55] cursor-pointer"
                 >
                   <span className="relative z-10 font-bold">Bergabung Sekarang</span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                </Link>
+                </button>
 
                 <Link
                   href="/about"
@@ -534,6 +538,12 @@ export default function Home() {
           </ScrollAnimation>
         </Container>
       </section>
+
+      {/* Bergabung Confirmation Modal */}
+      <BergabungModal
+        isOpen={showBergabungModal}
+        onClose={() => setShowBergabungModal(false)}
+      />
     </div>
   );
 }

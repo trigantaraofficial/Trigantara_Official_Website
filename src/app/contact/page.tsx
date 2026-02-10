@@ -205,35 +205,39 @@ export default function ContactPage() {
                 <Container className="relative z-10">
                     <ScrollAnimation variant="fadeUp">
                         <div className="rounded-2xl overflow-hidden border border-white/[0.05]">
-                            <div className="aspect-[21/9] bg-gradient-to-br from-[#0f0f0f] to-[#0a0a0a] flex items-center justify-center relative">
-                                {/* Decorative grid */}
-                                <div className="absolute inset-0 opacity-[0.03]" style={{
-                                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-                                    backgroundSize: '40px 40px',
-                                }} />
-
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#d4a017]/5 via-transparent to-transparent" />
-
-                                <div className="text-center relative z-10">
-                                    <motion.div
-                                        animate={{ y: [0, -5, 0] }}
-                                        transition={{ duration: 3, repeat: Infinity }}
-                                    >
-                                        <MapPin className="w-12 h-12 text-[#d4a017]/40 mx-auto mb-4" />
-                                    </motion.div>
-                                    <h3 className="text-white/60 font-medium text-lg mb-2">Peta Lokasi</h3>
-                                    <p className="text-white/30 text-sm">SMK Marhas Margahayu, Bandung</p>
-                                    <motion.a
-                                        href="https://maps.google.com"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/60 hover:text-white hover:border-white/20 transition-all text-sm"
-                                        whileHover={{ scale: 1.05 }}
-                                    >
-                                        <span>Buka di Google Maps</span>
-                                        <ExternalLink className="w-4 h-4" />
-                                    </motion.a>
+                            <div className="relative">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5!2d107.585!3d-6.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSMK+Marhas+Margahayu!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+                                    width="100%"
+                                    height="400"
+                                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.95) contrast(0.9)' }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Lokasi SMK Marhas Margahayu"
+                                    className="w-full"
+                                />
+                                {/* Overlay gradient for seamless blend */}
+                                <div className="absolute inset-0 pointer-events-none border border-white/[0.05] rounded-2xl" />
+                                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
+                            </div>
+                            <div className="bg-[#0a0a0a] p-4 flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <MapPin className="w-5 h-5 text-[#d4a017]" />
+                                    <div>
+                                        <p className="text-white text-sm font-medium">SMK Marhas Margahayu</p>
+                                        <p className="text-white/40 text-xs">Bandung, Jawa Barat</p>
+                                    </div>
                                 </div>
+                                <a
+                                    href="https://maps.google.com/maps?q=SMK+Marhas+Margahayu+Bandung"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#d4a017]/10 border border-[#d4a017]/20 text-[#d4a017] hover:bg-[#d4a017]/20 transition-all text-sm"
+                                >
+                                    <span>Buka Maps</span>
+                                    <ExternalLink className="w-3.5 h-3.5" />
+                                </a>
                             </div>
                         </div>
                     </ScrollAnimation>
@@ -277,15 +281,31 @@ export default function ContactPage() {
                                 question: 'Siapa saja yang bisa bergabung?',
                                 answer: 'Semua siswa-siswi SMK Marhas Margahayu yang berminat dalam kegiatan kepramukaan dan ingin mengembangkan diri dapat bergabung.',
                             },
+                            {
+                                question: 'Apakah ada biaya untuk bergabung?',
+                                answer: 'Tidak ada biaya pendaftaran khusus. Namun, ada iuran kecil untuk mendukung operasional kegiatan seperti perlengkapan dan transportasi perkemahan.',
+                            },
+                            {
+                                question: 'Apa itu Pramuka Penegak?',
+                                answer: 'Pramuka Penegak adalah anggota Gerakan Pramuka yang berusia 16-20 tahun, biasanya terdiri dari siswa SMA/SMK. Penegak dibagi menjadi dua tingkatan: Penegak Bantara dan Penegak Laksana.',
+                            },
+                            {
+                                question: 'Bagaimana struktur organisasi Trigantara?',
+                                answer: 'Trigantara dipimpin oleh Pradana Putra dan Pradana Putri, didampingi oleh Juru Adat, Sekretaris, Bendahara, dan seksi-seksi. Pembina dan pelatih mendampingi seluruh kegiatan. Lihat halaman Tim untuk detail lengkap.',
+                            },
+                            {
+                                question: 'Dimana lokasi latihan?',
+                                answer: 'Latihan dilaksanakan di lingkungan SMK Marhas Margahayu, Jl. Margahayu, Kota Bandung, Jawa Barat. Untuk beberapa kegiatan khusus seperti perkemahan, lokasi bisa berbeda.',
+                            },
                         ].map((faq, index) => (
                             <ScrollAnimation key={index} variant="fadeUp" delay={index * 0.1}>
                                 <motion.div
-                                    className="rounded-xl bg-white/[0.02] border border-white/[0.05] overflow-hidden"
+                                    className="rounded-xl bg-white/[0.02] border border-white/[0.05] overflow-hidden transition-colors duration-300 hover:border-[#d4a017]/20"
                                     whileHover={{ borderColor: 'rgba(212, 160, 23, 0.15)' }}
                                 >
                                     <button
                                         onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                                        className="w-full p-6 flex items-center justify-between text-left"
+                                        className="w-full p-6 flex items-center justify-between text-left cursor-pointer"
                                     >
                                         <h3 className="font-medium text-white pr-4">
                                             {faq.question}
